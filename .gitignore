@@ -1,0 +1,8 @@
+node_modules
+*.tgz
+dist
+test.ts
+coverage
+.env
+docs/.docusaurus
+docs/build
