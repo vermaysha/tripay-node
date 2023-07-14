@@ -1,0 +1,75 @@
+name: Test API and lint code
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+  pull_request_target:
+    branches:
+      - master
+
+jobs:
+  lint:
+    name: Lint code
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install depedencies
+        run: npm ci
+
+      - name: Lint code
+        run: npm run lint
+
+  test:
+    needs: lint
+    name: Test API Library
+    runs-on: ubuntu-latest
+
+    permissions:
+      checks: write
+      pull-requests: write
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install depedencies
+        run: npm ci
+
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1.3
+        with:
+          envkey_DEBUG: true
+          envkey_API_TOKEN: ${{ secrets.API_TOKEN }}
+          envkey_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          envkey_MERCHANT_NAME: ${{ secrets.MERCHANT_NAME }}
+          envkey_MERCHANT_CODE: ${{ secrets.MERCHANT_CODE }}
+
+      - name: Test and make coverage
+        run: npm run test:coverage
+
+      - name: Create Coverage Badges
+        uses: jaywcjlove/coverage-badges-cli@main
+        with:
+          style: flat
+          source: coverage/coverage-summary.json
+          output: coverage/badges.svg
+
+      - name: Deploy Test
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/master'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./coverage
+
