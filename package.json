@@ -5,23 +5,38 @@
   "exports": {
     ".": {
       "import": "./dist/esm/index.mjs",
-      "require": "./dist/cjs/index.js",
+      "require": "./dist/index.js",
       "types": "./dist/types/src/index.d.ts"
     },
     "./open-transaction": {
       "import": "./dist/esm/transaction/open-transaction/index.mjs",
-      "require": "./dist/cjs/transaction/open-transaction/index.js",
+      "require": "./dist/transaction/open-transaction/index.js",
       "types": "./dist/types/src/transaction/open-transaction/index.d.ts"
     },
     "./closed-transaction": {
       "import": "./dist/esm/transaction/closed-transaction/index.mjs",
-      "require": "./dist/cjs/transaction/closed-transaction/index.js",
+      "require": "./dist/transaction/closed-transaction/index.js",
       "types": "./dist/types/src/transaction/closed-transaction/index.d.ts"
+    },
+    "./callback": {
+      "import": "./dist/esm/callback/index.mjs",
+      "require": "./dist/callback/index.js",
+      "types": "./dist/types/src/callback/index.d.ts"
+    },
+    "./payment": {
+      "import": "./dist/esm/payment/index.mjs",
+      "require": "./dist/payment/index.js",
+      "types": "./dist/types/src/payment/index.d.ts"
+    },
+    "./merchant": {
+      "import": "./dist/esm/merchant/index.mjs",
+      "require": "./dist/merchant/index.js",
+      "types": "./dist/types/src/merchant/index.d.ts"
     },
     "./package.json": "./package.json"
   },
   "types": "./dist/types/index.d.ts",
-  "main": "./dist/cjs/index.js",
+  "main": "./dist/index.js",
   "module": "./dist/esm/index.mjs",
   "scripts": {
     "prepare": "husky install",
@@ -86,6 +101,7 @@
     "@commitlint/config-conventional": "^17.6.6",
     "@types/eslint": "latest",
     "@types/node": "^20.3.3",
+    "@types/node-fetch": "^2.6.4",
     "@types/prettier": "latest",
     "@typescript-eslint/eslint-plugin": "^5.61.0",
     "@typescript-eslint/parser": "^5.61.0",
@@ -103,6 +119,6 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "node-fetch": "^3.3.1"
+    "node-fetch": "^2.6.12"
   }
 }
