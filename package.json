@@ -18,11 +18,6 @@
       "require": "./dist/transaction/closed-transaction/index.js",
       "types": "./dist/types/src/transaction/closed-transaction/index.d.ts"
     },
-    "./callback": {
-      "import": "./dist/esm/callback/index.mjs",
-      "require": "./dist/callback/index.js",
-      "types": "./dist/types/src/callback/index.d.ts"
-    },
     "./payment": {
       "import": "./dist/esm/payment/index.mjs",
       "require": "./dist/payment/index.js",
