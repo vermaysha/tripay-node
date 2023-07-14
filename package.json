@@ -98,7 +98,7 @@
     "@types/node": "^20.4.2",
     "@types/node-fetch": "^2.6.4",
     "@types/prettier": "latest",
-    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^5.62.0",
     "ava": "^5.2.0",
     "c8": "^8.0.0",
@@ -109,7 +109,7 @@
     "fast-glob": "^3.3.0",
     "husky": "^8.0.3",
     "lint-staged": "13.2.3",
-    "prettier": "^2.8.8",
+    "prettier": "^3.0.0",
     "tsx": "^3.12.6",
     "typescript": "^5.1.6"
   },
