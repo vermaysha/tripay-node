@@ -32,9 +32,8 @@ writeFileSync('./dist/cjs/package.json', '{"type": "commonjs"}', {
   flag: 'w',
 })
 
-console.log('\x1b[34mBuilding dist for node type=module (esm)...\x1b[0m')
 buildSync({
-  entryPoints: ['./src/index.ts'],
+  entryPoints,
   outdir: './dist/esm',
   bundle: true,
   sourcemap: false,
@@ -46,6 +45,7 @@ buildSync({
   outExtension: {
     '.js': '.mjs',
   },
+  external: ['node-fetch'],
 })
 writeFileSync('./dist/esm/package.json', '{"type": "module"}', {
   flag: 'w',
