@@ -6,41 +6,33 @@
     ".": {
       "import": "./dist/esm/index.mjs",
       "require": "./dist/cjs/index.js",
-      "types": "./dist/types/index.d.ts"
+      "types": "./dist/types/src/index.d.ts"
     },
-    "./gi": {
-      "import": "./dist/esm/client/gi/index.mjs",
-      "require": "./dist/cjs/client/gi/index.js",
-      "types": "./dist/types/client/gi/index.d.ts"
+    "./open-transaction": {
+      "import": "./dist/esm/transaction/open-transaction/index.mjs",
+      "require": "./dist/cjs/transaction/open-transaction/index.js",
+      "types": "./dist/types/src/transaction/open-transaction/index.d.ts"
     },
-    "./hi": {
-      "import": "./dist/esm/client/hi/index.mjs",
-      "require": "./dist/cjs/client/hi/index.js",
-      "types": "./dist/types/client/hi/index.d.ts"
+    "./closed-transaction": {
+      "import": "./dist/esm/transaction/closed-transaction/index.mjs",
+      "require": "./dist/cjs/transaction/closed-transaction/index.js",
+      "types": "./dist/types/src/transaction/closed-transaction/index.d.ts"
     },
-    "./hsr": {
-      "import": "./dist/esm/client/hsr/index.mjs",
-      "require": "./dist/cjs/client/hsr/index.js",
-      "types": "./dist/types/client/hsr/index.d.ts"
-    },
-    "./hoyolab": {
-      "import": "./dist/esm/client/hoyolab/index.mjs",
-      "require": "./dist/cjs/client/hoyolab/index.js",
-      "types": "./dist/types/client/hoyolab/index.d.ts"
-    }
+    "./package.json": "./package.json"
   },
   "types": "./dist/types/index.d.ts",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.mjs",
   "scripts": {
     "prepare": "husky install",
-    "format": " npx prettier --ignore-path .gitignore \"**/*.{ts,js,json,mjs,tsx}\" -w",
+    "format": " prettier --ignore-path .gitignore \"**/*.{ts,js,json,mjs,tsx}\" -w",
     "lint": "eslint --ignore-path .gitignore \"**/*.{ts,js,json,mjs,tsx}\" --fix",
-    "build": "ts-node scripts/build.ts",
+    "build": "npm run test && tsx scripts/build.ts",
     "test": "npm run type-check && ava",
     "test:coverage": "npm run type-check && c8 ava",
     "test:watch": "ava --watch",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -77,11 +69,15 @@
       "tests/**/*.test.ts"
     ],
     "timeout": "5m",
-    "extensions": [
-      "ts"
-    ],
+    "extensions": {
+      "ts": "module"
+    },
     "require": [
-      "ts-node/register"
+      "dotenv/config"
+    ],
+    "nodeArguments": [
+      "--no-warnings",
+      "--loader=tsx"
     ]
   },
   "packageManager": "^npm@9.0.0",
@@ -95,6 +91,7 @@
     "@typescript-eslint/parser": "^5.61.0",
     "ava": "^5.2.0",
     "c8": "^8.0.0",
+    "dotenv": "^16.0.3",
     "esbuild": "^0.18.0",
     "eslint": "^8.44.0",
     "eslint-config-prettier": "^8.8.0",
@@ -102,8 +99,10 @@
     "husky": "^8.0.3",
     "lint-staged": "13.2.3",
     "prettier": "^2.8.8",
-    "ts-node": "^10.9.1",
     "tsx": "^3.12.6",
     "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.1"
   }
 }
