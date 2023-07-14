@@ -20,16 +20,13 @@ const entryPoints: string[] = globSync('./src/**/*.ts')
 console.log('\x1b[34mBuilding dist for node (cjs)...\x1b[0m')
 buildSync({
   entryPoints,
-  outdir: './dist/cjs',
+  outdir: './dist',
   bundle: false,
   sourcemap: false,
   minify: false,
   format: 'cjs',
   platform: 'node',
   target,
-})
-writeFileSync('./dist/cjs/package.json', '{"type": "commonjs"}', {
-  flag: 'w',
 })
 
 buildSync({
