@@ -103,22 +103,9 @@ jobs:
         run: |
           git push origin && git push --tags
 
-      - name: Pack package
-        run: npm pack
-
       - uses: google-github-actions/release-please-action@v3
         name: Release package to NPM
         with:
           release-type: node
           package-name: release-please-action
-
-      - uses: softprops/action-gh-release@v1
-        name: Release package to Github Release
-        with:
-          generate_release_notes: true
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fail_on_unmatched_files: false
-          prerelease: ${{ env.PRERELEASE }}
-          files:
-            '**/tripay-node*.tgz'
 
