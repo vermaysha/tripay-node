@@ -1,0 +1,30 @@
+# Open Transaction
+
+```typescript showLineNumbers
+import OpenTransaction from 'tripay-node/open-transaction'
+
+const transaction = new OpenTransaction({
+  apiToken: 'YOUR_API_TOKEN',
+  merchantCode: 'YOUR_MERCHANT_CODE',
+  privateKey: 'YOUR_PRIVATE_KEY',
+})
+
+// Retrieving a list of incoming payments for open payment
+const list = await transaction.list('YOUR_TRANSACTION_UUID')
+
+console.log(list)
+
+// Fetching the details of the previously made open payment transaction.
+const detail = await transaction.detail('YOUR_TRANSACTION_UUID')
+
+console.log(detail)
+
+// Creating a new transaction
+const create = await transaction.create({
+  method: 'BSIVAOP',
+  customer_name: 'John Doe',
+  merchant_ref: 'MERCHANT_REF',
+})
+
+console.log(create)
+```

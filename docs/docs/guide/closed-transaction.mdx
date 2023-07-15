@@ -1,0 +1,37 @@
+# Closed Transaction
+
+```typescript showLineNumbers
+import ClosedTransaction from 'tripay-node/closed-transaction'
+
+const transaction = new ClosedTransaction({
+    apiToken: 'YOUR_API_TOKEN',
+    merchantCode: 'YOUR_MERCHANT_CODE',
+    privateKey: 'YOUR_PRIVATE_KEY',
+  })
+
+  // Fetching the details of a previously made transaction.
+  const detail = await transaction.detail('YOUR_TRANSACTION_REFERENCE')
+
+  console.log(detail)
+
+  // Creating a new transaction
+  const create = await transaction.addOrderItem({
+    name: 'PRODUCT_NAME',
+    price: 10000,
+    quantity: 1,
+    sku: 'SKU',
+    subtotal: 10000,
+    image_url: 'http://image.com',
+    product_url: 'http://product.com',
+  }).create({
+    amount: 10000,
+    method: 'BNIVA',
+    merchant_ref: 'MERCHANT_REF',
+    customer_name: 'John Doe',
+    customer_email: 'a@b.com',
+    customer_phone: '1234567890',
+    expired_time: new Date().getTime() + 3600 * 1000, // 1 hours expiration
+  })
+
+  console.log(create)
+```

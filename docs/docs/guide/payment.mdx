@@ -1,0 +1,16 @@
+# Payment
+
+```typescript showLineNumbers
+import Payment from 'tripay-node/payment'
+
+const payment = new Payment({
+  apiToken: 'YOUR API_TOKEN',
+})
+
+// Fetching payment instructions from each channel.
+const instructions = await payment.instructions({
+  code: 'BRIVA'
+})
+
+console.log(instructions)
+```

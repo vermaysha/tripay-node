@@ -1,0 +1,24 @@
+# Merchant
+
+```typescript showLineNumbers
+import Merchant from 'tripay-node/merchant'
+
+const merchant = new Merchant({
+  apiToken: 'YOUR API_TOKEN',
+})
+
+// To obtain a list of merchant transactions.
+const transactions = await merchant.transactions();
+
+console.log(transactions)
+
+// Getting the transaction fee calculation details for each channel based on the specified amount.
+const fee  = await merchant.feeCalc(20000, 'BRIVA')
+
+console.log(fee)
+
+// Obtaining a list of active payment channels on your Merchant account, including complete information including transaction fees for each channel.
+const paymentChannels = await merchant.paymentChannel()
+
+console.log(paymentChannels)
+```
