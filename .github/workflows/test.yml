@@ -7,6 +7,12 @@ on:
     branches:
       - master
 
+env:
+  API_TOKEN: ${{ secrets.API_TOKEN }}
+  PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+  MERCHANT_NAME: ${{ secrets.MERCHANT_NAME }}
+  MERCHANT_CODE: ${{ secrets.MERCHANT_CODE }}
+
 jobs:
   lint:
     name: Lint code
@@ -46,15 +52,6 @@ jobs:
 
       - name: Install depedencies
         run: npm ci
-
-      - name: Make envfile
-        uses: SpicyPizza/create-envfile@v1.3
-        with:
-          envkey_DEBUG: true
-          envkey_API_TOKEN: ${{ secrets.API_TOKEN }}
-          envkey_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-          envkey_MERCHANT_NAME: ${{ secrets.MERCHANT_NAME }}
-          envkey_MERCHANT_CODE: ${{ secrets.MERCHANT_CODE }}
 
       - name: Test and make coverage
         run: npm run test:coverage
