@@ -37,12 +37,12 @@
     "prepare": "husky install",
     "format": " prettier --ignore-path .gitignore \"**/*.{ts,js,json,mjs,tsx}\" -w",
     "lint": "eslint --ignore-path .gitignore \"**/*.{ts,js,json,mjs,tsx}\" --fix",
-    "build": "npm run test && tsx scripts/build.ts",
+    "build": "tsx scripts/build.ts",
     "test": "npm run type-check && ava",
     "test:coverage": "npm run type-check && c8 ava",
     "test:watch": "ava --watch",
     "type-check": "tsc --noEmit",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run test && npm run build"
   },
   "repository": {
     "type": "git",
