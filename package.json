@@ -1,6 +1,6 @@
 {
   "name": "tripay-node",
-  "version": "0.0.0",
+  "version": "0.0.1-beta.0",
   "description": "Unofficial TriPay.co.id SDK for NodeJS",
   "exports": {
     ".": {
