@@ -1,15 +1,48 @@
+/**
+ * Represents the parameters for a payment instruction.
+ */
 export interface PaymentInstructionParams {
+  /**
+   * The code for the payment method.
+   */
   code: PaymentMethod
+
+  /**
+   * The pay code for the payment.
+   */
   pay_code?: string
+
+  /**
+   * The amount of the payment.
+   */
   amount?: number
+
+  /**
+   * Flag indicating whether HTML is allowed.
+   */
   allow_html?: boolean
 }
 
+/**
+ * Represents a payment instruction.
+ *
+ * @see [Payment Instructions - Tripay](https://tripay.co.id/developer?tab=payment-instruction)
+ */
 export interface IPaymentInstruction {
+  /**
+   * The title of the payment instruction.
+   */
   title: string
+
+  /**
+   * The steps to follow for the payment instruction.
+   */
   steps: string[]
 }
 
+/**
+ * The possible payment statuses.
+ */
 export type PaymentStatus = 'UNPAID' | 'PAID' | 'REFUND' | 'EXPIRED' | 'FAILED'
 
 /**
