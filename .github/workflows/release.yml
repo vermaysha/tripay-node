@@ -103,9 +103,3 @@ jobs:
         run: |
           git push origin && git push --tags
 
-      - uses: google-github-actions/release-please-action@v3
-        name: Release package to NPM
-        with:
-          release-type: node
-          package-name: release-please-action
-
