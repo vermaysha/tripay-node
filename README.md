@@ -8,22 +8,26 @@
         <a href="https://vermaysha-coverage.netlify.app/" target="_blank">
             <img src="https://raw.githubusercontent.com/vermaysha/tripay-node/gh-pages/badges.svg" alt="Coverage" />
         </a>
-        <a href="https://www.npmjs.com/package/vermaysha" target="_blank">
-            <img src="https://img.shields.io/npm/dt/vermaysha.svg?style=flat-square" alt="Total Downloads" />
+        <a href="https://www.npmjs.com/package/tripay-node" target="_blank">
+            <img src="https://img.shields.io/npm/dt/tripay-node.svg?style=flat-square" alt="Total Downloads" />
         </a>
         <a href="https://github.com/vermaysha/tripay-node/blob/master/LICENSE">
-            <img src="https://img.shields.io/github/license/vermaysha/vermaysha?style=flat-square" alt="MIT License" />
+            <img src="https://img.shields.io/github/license/vermaysha/tripay-node?style=flat-square" alt="MIT License" />
         </a>
     </p>
     <p>
-      <a href="https://www.npmjs.com/package/vermaysha" target="_blank">
-          <img src="https://img.shields.io/npm/v/vermaysha.svg?style=flat-square" alt="Latest Version on Packagist" />
+      <a href="https://www.npmjs.com/package/tripay-node" target="_blank">
+          <img src="https://img.shields.io/npm/v/tripay-node.svg?style=flat-square" alt="Latest Version on Packagist" />
       </a>
-      <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/vermaysha/tripay-node/master?style=flat-square&label=github" />
+      <a href="https://github.com/vermaysha/tripay-node/blob/master/package.json" target="_blank">
+        <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/vermaysha/tripay-node/master?style=flat-square&label=github" />
+      </a>
       <a href="https://github.com/vermaysha/tripay-node/releases/latest" target="_blank">
-          <img src="https://img.shields.io/github/release-date/vermaysha/vermaysha?style=flat-square" alt="GitHub Release Date - Published_At" />
+          <img src="https://img.shields.io/github/release-date/vermaysha/tripay-node?style=flat-square" alt="GitHub Release Date - Published_At" />
       </a>
-      <img alt="node-current" src="https://img.shields.io/node/v/vermaysha?style=flat-square" />
+      <a href="https://www.npmjs.com/package/tripay-node" target="_blank">
+        <img alt="node-current" src="https://img.shields.io/node/v/tripay-node?style=flat-square" />
+      </a>
     </p>
 </div>
 
