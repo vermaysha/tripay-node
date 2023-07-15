@@ -1,7 +1,7 @@
 {
   "name": "tripay-node",
   "version": "1.0.0",
-  "description": "Unofficial TriPay.co.id SDK for NodeJS",
+  "description": "NodeJS/Typescript/Javascript Unofficial Tripay API SDK",
   "exports": {
     ".": {
       "import": "./dist/esm/index.mjs",
@@ -51,7 +51,9 @@
   "keywords": [
     "tripay",
     "payment-gateway",
-    "tripay.co.id"
+    "tripay.co.id",
+    "tripay-wrapper",
+    "tripay-api"
   ],
   "author": {
     "name": "Ashary Vermaysha",
