@@ -1,0 +1,54 @@
+name: Release to Github
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+  discussions: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+        # Setup Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          registry-url: https://registry.npmjs.org/
+          node-version: '18'
+
+      # Install dependencies (required by Run tests step)
+      - name: Install dependencies
+        run: npm ci
+
+      # Build library
+      - name: Build library
+        run: npm run build
+
+      - name: Check for beta tag
+        id: check_tag
+        run: |
+          if [[ "${{ github.ref }}" == *"beta"* ]]; then
+            echo "PRERELEASE=true" >> $GITHUB_ENV
+          else
+            echo "PRERELEASE=false" >> $GITHUB_ENV
+          fi
+
+      - name: Pack package
+        run: npm pack
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          generate_release_notes: true
+          fail_on_unmatched_files: false
+          prerelease: ${{ env.PRERELEASE }}
+          files:
+            '**/tripay-node*.tgz'
