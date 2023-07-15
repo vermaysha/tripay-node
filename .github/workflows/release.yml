@@ -16,6 +16,12 @@ on:
         description: 'Release type (one of): patch, minor, major, prepatch, preminor, premajor, prerelease'
         required: true
 
+env:
+  API_TOKEN: ${{ secrets.API_TOKEN }}
+  PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+  MERCHANT_NAME: ${{ secrets.MERCHANT_NAME }}
+  MERCHANT_CODE: ${{ secrets.MERCHANT_CODE }}
+
 concurrency:
   group: 'release'
   cancel-in-progress: true
